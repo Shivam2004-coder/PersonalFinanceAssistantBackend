@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const allowedOrigins = [
-  'https://techtribe-f.onrender.com',
+  'https://personalfinanceassistant-frontend.onrender.com',
   'http://localhost:5173'
 ];
 
