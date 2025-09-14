@@ -60,31 +60,49 @@ GEMINI_API_KEY=<your-google-gemini-api-key>
 
 
 ## API Routes
-# Authentication Routes
-POST   /signup           -> Manual user signup           (No Auth)
-POST   /login            -> Manual user login            (No Auth)
-GET    /auth/google      -> Google OAuth login           (No Auth)
-POST   /logout           -> Logout user                  (Auth Required)
 
+### Authentication Routes
 
-# Gemini AI Routes
-POST   /gemini/search    -> Parse PDF and extract transaction details using Google Gemini AI (Auth Required)
+| Method | Route        | Description        | Auth Required |
+| ------ | ------------ | ----------------- | ------------- |
+| POST   | /signup      | Manual user signup | No            |
+| POST   | /login       | Manual user login  | No            |
+| GET    | /auth/google | Google OAuth login | No            |
+| POST   | /logout      | Logout user        | Yes           |
 
+### Gemini AI Routes
 
-# Graph Routes
-GET    /graph           -> Retrieve transaction graph data (Auth Required)
+| Method | Route           | Description                                             | Auth Required |
+| ------ | --------------- | ------------------------------------------------------- | ------------- |
+| POST   | /gemini/search  | Parse PDF and extract transaction details using Google Gemini AI | Yes           |
 
-# Profile Routes
-GET    /profile/view    -> View user profile (Auth Required)
+### Graph Routes
 
-# Transaction Routes
-POST   /transaction/add      -> Add a new transaction       (Auth Required)
-POST   /transaction          -> Search for transactions    (Auth Required)
-POST   /transaction/update   -> Update an existing transaction (Auth Required)
-DELETE /transaction/delete   -> Delete a transaction       (Auth Required)
+| Method | Route  | Description                     | Auth Required |
+| ------ | ------ | ------------------------------- | ------------- |
+| GET    | /graph | Retrieve transaction graph data | Yes           |
 
-# Middleware
-userAuth -> Verifies JWT tokens and authenticates users for protected routes
+### Profile Routes
+
+| Method | Route          | Description       | Auth Required |
+| ------ | -------------- | ---------------- | ------------- |
+| GET    | /profile/view  | View user profile | Yes           |
+
+### Transaction Routes
+
+| Method | Route                  | Description                        | Auth Required |
+| ------ | --------------------- | --------------------------------- | ------------- |
+| POST   | /transaction/add       | Add a new transaction              | Yes           |
+| POST   | /transaction           | Search for transactions            | Yes           |
+| POST   | /transaction/update    | Update an existing transaction     | Yes           |
+| DELETE | /transaction/delete    | Delete a transaction               | Yes           |
+
+### Middleware
+
+| Middleware | Description                                      |
+| ---------- | ------------------------------------------------ |
+| userAuth   | Verifies JWT tokens and authenticates users for protected routes |
+
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
