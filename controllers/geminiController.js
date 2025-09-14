@@ -8,8 +8,8 @@ dotenv.config();
 exports.geminiSearch = async (req, res) => {
 
     const { data } = req.body;
-    console.log("I am in gemini search !!");
-    console.log(data);
+    // console.log("I am in gemini search !!");
+    // console.log(data);
 
     try {
 
@@ -38,7 +38,7 @@ exports.geminiSearch = async (req, res) => {
             geminiQuery,
         ]);
 
-        console.log(result);
+        // console.log(result);
         let outputText = result.response.text();
 
         // Remove triple backticks if present
@@ -48,14 +48,14 @@ exports.geminiSearch = async (req, res) => {
         try {
         parsedObject = JSON.parse(outputText);
         } catch (e) {
-        console.error("Failed to parse Gemini output:", e, outputText);
+        // console.error("Failed to parse Gemini output:", e, outputText);
         return res.status(500).json({ error: "Invalid JSON from Gemini" });
         }
 
         res.status(200).json({ data: parsedObject });
 
     } catch (error) {
-        console.error("Error parsing PDF:", error);
+        // console.error("Error parsing PDF:", error);
         res.status(500).send("Internal server error");
     }
 };

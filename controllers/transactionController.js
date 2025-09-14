@@ -10,7 +10,7 @@ export const addTransaction = async (req, res) => {
     const { form } = req.body;
     const loggedInUser = req.user; 
 
-    console.log("Transaction data received:", form);
+    // console.log("Transaction data received:", form);
 
     // Validate user exists
     const user = await User.findById(loggedInUser._id).session(session);
@@ -61,7 +61,7 @@ export const addTransaction = async (req, res) => {
   } catch (error) {
     await session.abortTransaction(); // rollback if any error
     session.endSession();
-    console.log("Error in adding transaction :", error.message);
+    // console.log("Error in adding transaction :", error.message);
     return res.status(500).json({
       message: "Error in adding transaction. Please try again.",
     });
@@ -73,10 +73,10 @@ export const updateTransaction = async (req, res) => {
   session.startTransaction();
 
   try {
-    const { form } = req.body; // form should contain _id of transaction and updated details
+    const { form } = req.body; 
     const loggedInUser = req.user;
 
-    console.log("Transaction update data received:", form);
+    // console.log("Transaction update data received:", form);
 
     // Validate user exists
     const user = await User.findById(loggedInUser._id).session(session);
@@ -90,7 +90,7 @@ export const updateTransaction = async (req, res) => {
     validateFormData(form);
 
     // Find existing transaction
-    console.log("Finding transaction with ID:", form._id);
+    // console.log("Finding transaction with ID:", form._id);
     const transaction = await Transaction.findById(form._id).session(session);
     if (!transaction) {
       await session.abortTransaction();
@@ -140,7 +140,7 @@ export const updateTransaction = async (req, res) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    console.error("Error in updating transaction:", error.message);
+    // console.error("Error in updating transaction:", error.message);
     return res.status(500).json({
       message: "Error in updating transaction. Please try again.",
     });
@@ -198,7 +198,7 @@ export const deleteTransaction = async (req, res) => {
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    console.error("Error in deleting transaction:", error.message);
+    // console.error("Error in deleting transaction:", error.message);
     return res.status(500).json({
       message: "Error in deleting transaction. Please try again.",
     });
@@ -210,7 +210,7 @@ export const searchTransactions = async (req, res) => {
     const { form } = req.body;
     const loggedInUser = req.user;
 
-    console.log("Search criteria received:", form);
+    // console.log("Search criteria received:", form);
 
     // Validate user exists
     const user = await User.findById(loggedInUser._id);
@@ -250,7 +250,7 @@ export const searchTransactions = async (req, res) => {
       }
     }
 
-    console.log("MongoDB filter:", filter);
+    // console.log("MongoDB filter:", filter);
 
     // Fetch with pagination
     const transactions = await Transaction.find(filter)
@@ -268,7 +268,7 @@ export const searchTransactions = async (req, res) => {
       data: transactions,
     });
   } catch (error) {
-    console.error("Error searching transactions:", error);
+    // console.error("Error searching transactions:", error);
     res
       .status(500)
       .json({ message: "Server error while searching transactions." });

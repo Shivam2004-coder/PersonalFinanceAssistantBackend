@@ -34,7 +34,7 @@ exports.searchForGraphs = async (req, res) => {
       transactions,
     });
   } catch (error) {
-    console.error("Error fetching graph data:", error);
+    // console.error("Error fetching graph data:", error);
     res.status(500).json({
       message: "Internal Server Error while fetching graph data",
     });
