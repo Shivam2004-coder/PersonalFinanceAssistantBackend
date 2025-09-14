@@ -106,8 +106,6 @@ Create a .env file in the root directory and add the following variables:
 
 ## API Flow
 
-Here’s a simple human-friendly flow of how these APIs work together:
-
 ### User Authentication
 - The user signs up using `/signup` or logs in using `/login`.
 - They can also use `/auth/google` for Google login.
