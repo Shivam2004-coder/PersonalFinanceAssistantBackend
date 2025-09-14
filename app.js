@@ -52,9 +52,9 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "dist")));
 
 // For any other route not handled by your API, return the frontend app
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 connectDB()
     .then(() => {
