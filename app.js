@@ -22,7 +22,7 @@ app.use(cors({
   credentials: true
 }));
 
-// app.options('*', cors());
+app.options('*', cors());
 // Enable preflight CORS for all routes
 // app.options('/*', cors());
 
@@ -52,7 +52,7 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "dist")));
 
 // For any other route not handled by your API, return the frontend app
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
