@@ -6,6 +6,8 @@ This repository contains the backend code for a Personal Finance Assistant appli
 
 ## Table of Contents
 
+## Table of Contents
+
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
@@ -16,7 +18,9 @@ This repository contains the backend code for a Personal Finance Assistant appli
   - [Profile Routes](#profile-routes)
   - [Transaction Routes](#transaction-routes)
 - [Middleware](#middleware)
+- [API Flow](#api-flow)
 - [License](#license)
+
 
 ---
 
@@ -26,7 +30,7 @@ This repository contains the backend code for a Personal Finance Assistant appli
 - Express.js
 - Google Gemini AI API
 - JWT Authentication
-- MongoDB (optional, depending on your database setup)
+- MongoDB 
 
 ---
 
