@@ -48,13 +48,18 @@ app.use("/" , geminiRouter);
 
 const path = require("path");
 
-// Serve static files from the frontend (React build)
-app.use(express.static(path.join(__dirname, "dist")));
 
-// For any other route not handled by your API, return the frontend app
-app.get("*", (req, res) => {
+const frontendRouter = express.Router();
+frontendRouter.use(express.static(path.join(__dirname, "dist")));
+frontendRouter.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+app.use(frontendRouter);
+
+// app.use(express.static(path.join(__dirname, "dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
 
 connectDB()
     .then(() => {
