@@ -34,11 +34,13 @@ const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const transactionRouter = require("./routes/transaction");
 const graphRouter = require("./routes/graph");
+const geminiRouter = require("./routes/gemini");
 
 app.use("/" , authRouter );
 app.use("/" , profileRouter);
 app.use("/" , transactionRouter);
 app.use("/" , graphRouter);
+app.use("/" , geminiRouter);
 
 // app.get("/" , (req,res) => {
 //     res.send("Hello World");
