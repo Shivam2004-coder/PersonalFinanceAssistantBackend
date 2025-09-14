@@ -45,7 +45,7 @@ npm install
 3. Start the server:
 
 npm run dev   # if using nodemon
-# or
+-- or -- 
 node app.js
 
 
@@ -102,6 +102,39 @@ Create a .env file in the root directory and add the following variables:
 | Middleware | Description                                      |
 | ---------- | ------------------------------------------------ |
 | userAuth   | Verifies JWT tokens and authenticates users for protected routes |
+
+
+## API Flow
+
+Here’s a simple human-friendly flow of how these APIs work together:
+
+### User Authentication
+- The user signs up using `/signup` or logs in using `/login`.
+- They can also use `/auth/google` for Google login.
+- After login, a JWT token is issued to authenticate future requests.
+
+### Access Protected Routes
+- Any route that requires authentication (like transactions, profile, graphs, Gemini AI) uses the `userAuth` middleware.
+- This middleware checks the JWT token and allows access if valid.
+
+### Transactions
+- Users can **add** new transactions using `/transaction/add`.
+- They can **search** transactions using `/transaction`.
+- Transactions can be **updated** via `/transaction/update` and **deleted** via `/transaction/delete`.
+
+### Profile & Graphs
+- Users can view their profile details using `/profile/view`.
+- Transaction graphs and summaries can be retrieved via `/graph`.
+
+### Gemini AI
+- Users can upload a PDF (as Base64) via `/gemini/search`.
+- The API parses the PDF and returns structured transaction data.
+
+### In simple terms:
+1. First, authenticate → get a token.
+2. Then, use the token to access any protected data like transactions, profile, graphs, or PDF parsing.
+3. Each API works like a “step” in your workflow:  
+   `authenticate → add/search transactions → analyze → view graphs → parse PDFs`
 
 
 ## License
