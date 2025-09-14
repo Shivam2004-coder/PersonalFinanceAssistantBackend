@@ -53,10 +53,10 @@ node app.js
 
 Create a .env file in the root directory and add the following variables:
 
-PORT=5000
-MONGO_URI=<your-mongodb-uri>
-JWT_SECRET=<your-jwt-secret>
-GEMINI_API_KEY=<your-google-gemini-api-key>
+- **PORT=5000**
+- **MONGO_URI=<your-mongodb-uri>**
+- **JWT_SECRET=<your-jwt-secret>**
+- **GEMINI_API_KEY=<your-google-gemini-api-key>**
 
 
 ## API Routes
