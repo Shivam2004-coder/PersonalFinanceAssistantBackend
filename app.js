@@ -48,28 +48,25 @@ app.use("/" , geminiRouter);
 
 const path = require("path");
 
-
-const frontendRouter = express.Router();
-frontendRouter.use(express.static(path.join(__dirname, "dist")));
-frontendRouter.get("/*", (req, res) => {
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
-app.use(frontendRouter);
 
-// app.use(express.static(path.join(__dirname, "dist")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
+const http = require("http");
+
+// wrap app in HTTP server
+const server = http.createServer(app);
 
 connectDB()
     .then(() => {
-        console.log("Database connection established ......");
+        console.log("Database connected");
         const PORT = process.env.PORT || 3000;
-        app.listen( PORT , () => {
-            console.log("It is listening on port 3000");
+        server.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
         });
     })
-    .catch((err) => {
+    .catch(err => {
         console.log("Database cannot be established!");
     });
 
