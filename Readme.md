@@ -1,6 +1,6 @@
 # Backend API Documentation
 
-This repository contains the backend code for a web application that manages user authentication, transactions, profiles, graphs, and PDF parsing using Google's Gemini AI API.
+This repository contains the backend code for a Personal Finance Assistant application that manages user authentication, transactions, profiles, graphs, and PDF parsing using Google's Gemini AI API.
 
 ---
 
